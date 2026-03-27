@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n Node Parser Viewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-header">
+                <h1>n8n Nodes</h1>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search nodes..." autocomplete="off">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+            <div class="node-list-container">
+                <ul id="nodeList" class="node-list">
+                    <!-- Nodes will be populated here -->
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <span id="nodeCount">0 nodes</span>
+                <button id="themeToggle" class="theme-btn">☀️</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content glass-panel" id="mainContent">
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">👈</div>
+                <h2>Select a node to view its details</h2>
+                <p>Browse the list or use the search bar to find specific n8n nodes.</p>
+            </div>
+
+            <div class="node-details hidden" id="nodeDetails">
+                <div class="details-header">
+                    <div class="header-top">
+                        <h2 id="detailName">Node Name</h2>
+                        <span class="version-badge" id="detailVersion">v1.0.0</span>
+                    </div>
+                    <div class="tags" id="detailTags">
+                        <!-- Badges for type, categories -->
+                    </div>
+                    <p class="subtitle" id="detailSubtitle"></p>
+                    <p class="description" id="detailDescription"></p>
+                    <a id="detailDocs" href="#" target="_blank" class="docs-link hidden">View Documentation ↗</a>
+                </div>
+
+                <div class="io-section">
+                    <div class="io-box">
+                        <h3>Inputs (<span id="inputCount">0</span>)</h3>
+                        <div class="io-tags" id="detailInputs"></div>
+                    </div>
+                    <div class="io-box">
+                        <h3>Outputs (<span id="outputCount">0</span>)</h3>
+                        <div class="io-tags" id="detailOutputs"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Credentials</h3>
+                    <div class="credentials-list" id="detailCredentials"></div>
+                </div>
+
+                <div class="section">
+                    <h3>Properties (<span id="propCount">0</span>)</h3>
+                    <div class="table-container">
+                        <table class="props-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Required</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailPropsBody">
+                                <!-- Props populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Example Output</h3>
+                    <div class="code-container">
+                        <pre><code id="detailExample"></code></pre>
+                        <button class="copy-btn" id="copyExampleBtn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Data and logic -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
